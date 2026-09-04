@@ -1,20 +1,15 @@
 <?php
-$test = 10 + 10;
-$test = 10 * 10;
-$test = 3 % 6;
-$test = 10 ** 10; // ppepepe
-$test += 10;
-$test -= 10;
-$test ++;
-$test ++;
-++$test;
---$test;
-$a = 10;
-$b = ++$a;
-var_dump($test);
-var_dump($b,$a);
-
-$test = 10;
-$test = sin($test);
+$test = "Govno";
+$test = "Bububu" . "Bebebe";
+$test .= "Rowr";
+$name = "Churka";
+$age = 6;
+$test = $name. ' is ' . $age . ' years old';
+$test = "$name is $age years old";
+$test = "lele\n\nlala";
+$test = <<<END
+cool stuff here
+multi line
+END;
 var_dump($test);
 ?>
