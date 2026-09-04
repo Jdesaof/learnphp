@@ -1,9 +1,20 @@
 <?php
+$test = 10 + 10;
+$test = 10 * 10;
+$test = 3 % 6;
+$test = 10 ** 10; // ppepepe
+$test += 10;
+$test -= 10;
+$test ++;
+$test ++;
+++$test;
+--$test;
+$a = 10;
+$b = ++$a;
+var_dump($test);
+var_dump($b,$a);
+
 $test = 10;
-$test = 3.1;
-$test = "Meow";
-$test = [1, true, "Poopie"];
-$test = new stdClass();
-$test -> name = "bybe";
+$test = sin($test);
 var_dump($test);
 ?>
