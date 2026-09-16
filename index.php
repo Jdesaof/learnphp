@@ -9,15 +9,15 @@
     }
  }
 
- $box1 = new Box();
- $box1->width = 5;
- $box1->length = 10;
- $box1->height = 15;
- var_dump($box1, $box1->volume());
+$num1 = 1;
+$num2 = &$num1;
+$num1 = 2;
+var_dump($num1, $num2);
 
- $box2 = new Box();
- $box2->width = 3;
- $box2->length = 4;
- $box2->height = 5;
- var_dump($box2, $box2->volume());
+$box1 = new Box();
+$box1->width = 1;
+$box2 =clone $box1;
+$box2->width = $box1->width;
+$box1->width = 2;
+var_dump($box1, $box2);
 ?> 
