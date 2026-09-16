@@ -1,50 +1,23 @@
 <?php
- 
-for ($i=0; $i<10; $i++) {
-    var_dump($i);
-}
+ class Box {
+    public $width;
+    public $length;
+    public $height;
 
-for ($i=9; $i>=0; $i--) {
-    var_dump($i);
-}
-
-for($i=1; $i<1_000_000; $i*=2) {
-    var_dump($i);
-}
-
-$time = time();
-$count = 0;
-while($time+1 > time()){
-    $count++;
-}
-var_dump($count);
-
-while (false) {
-    var_dump('while');
-}
-
-do {
-        var_dump('do');
-    } while (false);
-
-$fruits = ['apple', 'banana', 'cherry', 'pear'];
-
-for ($i=0; $i<count($fruits); $i++) {
-    var_dump($fruits[$i]);
-}
-foreach ($fruits as $fruit) {
-    var_dump($fruit);
-}
-
-foreach($fruits as $key => $fruit) {
-    var_dump($key, $fruit);
-}
-
-function recursive($i) {
-    if ($i < 10) {
-        var_dump($i);
-        recursive($i+1);
+    public function volume() {
+        return $this->width * $this->length * $this->height;
     }
-}
-recursive(0);
+ }
+
+ $box1 = new Box();
+ $box1->width = 5;
+ $box1->length = 10;
+ $box1->height = 15;
+ var_dump($box1, $box1->volume());
+
+ $box2 = new Box();
+ $box2->width = 3;
+ $box2->length = 4;
+ $box2->height = 5;
+ var_dump($box2, $box2->volume());
 ?> 
