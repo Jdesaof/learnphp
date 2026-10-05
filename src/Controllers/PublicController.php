@@ -33,7 +33,13 @@ class PublicController {
         ];
         view('index', compact('title', 'posts'));
     }
- 
+    public function forms() {
+        view('forms');
+    }
+    
+    public function answer() {
+        dump($_GET, $_POST);
+    }
     public function us() {
         $title = 'U.S';
         $posts = [
@@ -66,6 +72,8 @@ class PublicController {
     }
     public function tech() {
     $title = 'Technology';
+
+    
 
     $posts = [
         [
