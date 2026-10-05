@@ -31,7 +31,7 @@ class PublicController {
                 'body' => 'Some World body 4',
             ],
         ];
-        include __DIR__ . '/../../views/index.php';
+        view('index', compact('title', 'posts'));
     }
  
     public function us() {
@@ -62,7 +62,7 @@ class PublicController {
                 'body' => 'Some U.S body 4',
             ],
         ];
-        include __DIR__ . '/../../views/us.php';
+        view('us', compact('title', 'posts'));
     }
     public function tech() {
     $title = 'Technology';
@@ -72,7 +72,7 @@ class PublicController {
             'title' => 'Cyberpunk',
             'date' => 'October 1, 2026',
             'author' => 'Daniil',
-            'body' => 'Artificial intelligence is becoming more popular and is used in many modern applications.',
+            'body' => 'CyberPunk is a futuristic genre that explores the intersection of technology and society.',
         ],
         [
             'title' => 'New Smartphones',
