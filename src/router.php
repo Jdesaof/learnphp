@@ -6,12 +6,9 @@ class Router
 {
     private static $routes = [];
 
-    public static function addRoute($path, $action)
+    public static function addRoute(string $method, string $path, callable|array $action)
     {
-        self::$routes[] = [
-            'path' => $path,
-            'action' => $action
-        ];
+        self::$routes[] = new Route($method, $path, $action);
     }
 
     public static function getRoutes()
@@ -19,7 +16,7 @@ class Router
         return self::$routes;
     }
 
-    public function __construct(private $path)
+    public function __construct(private $path, private $method)
     {
         $this->path = parse_url($path, PHP_URL_PATH);
     }
@@ -27,7 +24,7 @@ class Router
     public function match()
     {
         foreach (self::$routes as $route) {
-            if ($route['path'] === $this->path) {
+            if ($route->getPath() === $this->path && $route->getMethod() === $this->method) {
                 return $route;
             }
         }
