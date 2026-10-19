@@ -7,7 +7,7 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css)$/', $_SERVER["REQUEST_URI"])) {
 }
  
  
-
+ 
  
 spl_autoload_register(function ($class) {
     $class = substr($class, 4);
@@ -19,7 +19,7 @@ use App\Router;
  
 require __DIR__ . '/../helpers.php';
 require __DIR__ . '/../routes.php';
-
+ 
  
 $router = new Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 $match = $router->match();

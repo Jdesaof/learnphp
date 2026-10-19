@@ -36,7 +36,7 @@ class DB {
 
     }
  
-    public function all(string $table){
+    public function all(string $table, string $class){
 
         $sql = "SELECT * FROM $table";
 
