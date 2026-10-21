@@ -1,6 +1,6 @@
 <?php include __DIR__ . '/../partials/header.php'; ?>
 <main class="container">
-    <a href="#" class="btn btn-primary">New Post</a>
+    <a href="/admin/posts/create" class="btn btn-primary">New Post</a>
 <table class="table table-striped table-hover">
     <thead>
         <th>ID</th>
@@ -10,7 +10,7 @@
         <th>Actions</th>
     </thead>
     <tbody>
-        <?php foreach($posts as $post): ?>
+        <?php foreach($posts ?? [] as $post): ?>
             <tr>
                 <td><?= $post->id ?></td>
                 <td><?= $post->title ?></td>

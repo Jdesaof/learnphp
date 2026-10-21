@@ -48,5 +48,18 @@ class DB {
 
     }
 
+    public function insert($table, $fields) {
+        $fieldsNames = array_keys($fields);
+        $fieldsNameText = implode(', ', $fieldsNames);
+        $fieldsValuesText = implode("', '", $fields);
+        $sql = "INSERT INTO $table ($fieldsNameText)
+                VALUES('$fieldsValuesText')";
+
+        dd($sql);
+        $this->conn->exec($sql);
+
+
+        
+    }
 }
  
