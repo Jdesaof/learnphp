@@ -1,0 +1,17 @@
+{
+    "name": "danii/learnphp",
+    "type": "project",
+    "license": "WTFPL",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jdesaof",
+            "email": "daniiljanot@gmail.com"
+        }
+    ],
+    "require": {}
+}
