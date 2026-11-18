@@ -28,14 +28,15 @@
 <path d="M21 21l-5.2-5.2"></path>
 </svg>
 </a>
-<?php if (auth()): ?>
+<?php if ($signedInUser = auth()): ?>
 
  
                     <div class="dropdown">
 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-<b><?= auth()->name ?></b>
+<b><?= htmlspecialchars($signedInUser->name) ?></b>
 </button>
 <ul class="dropdown-menu">
+<li><a class="dropdown-item" href="/admin/users">Users</a></li>
  
                         </ul>
 </div>
