@@ -56,13 +56,13 @@ class DB
  
     public function update($table, $fields, $id)
     {
-        $updateValuesText = '';
-        foreach ($fields as $name => $value) {
-            $updateValuesText .= "$name='$value', ";
+        $assignments = [];
+        foreach (array_keys($fields) as $name) {
+            $assignments[] = "$name = ?";
         }
-        $updateValuesText = substr($updateValuesText, 0, -2);
-        $sql = "UPDATE $table SET $updateValuesText WHERE id = $id";
-        $this->conn->exec($sql);
+        $updateValuesText = implode(', ', $assignments);
+        $statement = $this->conn->prepare("UPDATE $table SET $updateValuesText WHERE id = ?");
+        $statement->execute([...array_values($fields), $id]);
     }
  
     public function delete($table, $id)

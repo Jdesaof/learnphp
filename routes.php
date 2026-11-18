@@ -3,6 +3,7 @@
 use App\Controllers\AuthController;
 use App\Controllers\PostController;
 use App\Controllers\PublicController;
+use App\Controllers\UsersController;
 use App\Route;
  
 Route::get('/', [PublicController::class, 'index']);
@@ -20,6 +21,12 @@ Route::get('/admin/posts/view', [PostController::class, 'view']);
 Route::get('/admin/posts/edit', [PostController::class, 'edit']);
 Route::post('/admin/posts/edit', [PostController::class, 'update']);
 Route::get('/admin/posts/delete', [PostController::class, 'delete']);
+
+Route::get('/admin/users', [UsersController::class, 'index']);
+Route::get('/admin/users/view', [UsersController::class, 'view']);
+Route::get('/admin/users/edit', [UsersController::class, 'edit']);
+Route::post('/admin/users/edit', [UsersController::class, 'update']);
+Route::post('/admin/users/delete', [UsersController::class, 'delete']);
  
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/register', [AuthController::class, 'registerForm']);
