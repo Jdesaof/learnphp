@@ -1,37 +1,38 @@
-<?php
- 
- 
- 
-if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css)$/', $_SERVER["REQUEST_URI"])) {
-    return false;    // serve the requested resource as-is.
-}
- 
- 
- 
- 
-spl_autoload_register(function ($class) {
-    $class = substr($class, 4);
-    $class = str_replace('\\', '/', $class);
-    require_once __DIR__ . "/../src/$class.php";
-});
- 
-use App\Router;
- 
-require __DIR__ . '/../helpers.php';
-require __DIR__ . '/../routes.php';
- 
- 
-$router = new Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-$match = $router->match();
-if($match) {
-    if(is_callable($match->getAction())) {
-        call_user_func($match->getAction());
-    } else if (is_array($match->getAction())){
-        $class = $match->getAction()[0];
-        $controller = new $class();
-        $method = $match->getAction()[1];
-        $controller->$method();
-    }
-} else {
-    echo 404;
-}
+<?php include __DIR__ . '/../partials/header.php'; ?>
+<main class="container">
+<a href="#" class="btn btn-primary">New Post</a>
+<table class="table table-striped table-hover">
+<thead>
+<th>ID</th>
+<th>Title</th>
+<th>Created</th>
+<th>Updated</th>
+<th>Actions</th>
+</thead>
+<tbody>
+<?php foreach (($posts ?? []) as $post): ?>
+<tr>
+<td><?= $post->id ?></td>
+<td><?= $post->title ?></td>
+<td><?= $post->created_at ?></td>
+<td><?= $post->updated_at ?></td>
+<td>
+<div class="btn-group">
+<a href="/admin/posts/view?id=<?= $post->id ?>" class="btn btn-info">View</a>
+<a href="/admin/posts/edit?id=<?= $post->id ?>" class="btn btn-warning">Edit</a>
+<a href="/admin/posts/delete?id=<?= $post->id ?>" class="btn btn-danger">Delete</a>
+</div>
+</td>
+</tr>
+<?php endforeach ?>
+</tbody>
+<tfoot>
+<th>ID</th>
+<th>Title</th>
+<th>Created</th>
+<th>Updated</th>
+<th>Actions</th>
+</tfoot>
+</table>
+</main>
+<?php include __DIR__ . '/../partials/footer.php'; ?>

@@ -1,18 +1,22 @@
 <?php
+ 
 function dump(...$vars)
 {
     echo '<pre>';
     var_dump(...$vars);
     echo '</pre>';
 }
-
-function dd(...$vars)
-{
+ 
+function dd(...$vars) {
     dump(...$vars);
     die;
 }
-
-function view($viewName, $variables = []) { 
+ 
+function view($viewName, $variables=[]){
     extract($variables);
     include __DIR__ . "/views/$viewName.php";
+}
+ 
+function redirect($to) {
+    header("Location: $to");
 }
